@@ -1,0 +1,17 @@
+import heapq
+class Solution:
+    def findClosestNumber(self, nums: List[int]) -> int:
+        temp=[]
+        for i in nums:
+            temp.append([abs(i-0),i])
+        heapq.heapify(temp)
+        val=temp[0][1]
+        d=temp[0][0]
+        while len(temp)>1:
+            heapq.heappop(temp)
+            if temp[0][0]!=d:
+                return val
+            else:
+                if temp[0][1]>val:
+                    val=temp[0][1]
+        return val
